@@ -16,6 +16,9 @@
 		6DE51EAC28FD23EA007450ED /* Flat_EarthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE51EAB28FD23EA007450ED /* Flat_EarthTests.swift */; };
 		6DE51EB628FD23EA007450ED /* Flat_EarthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE51EB528FD23EA007450ED /* Flat_EarthUITests.swift */; };
 		6DE51EB828FD23EA007450ED /* Flat_EarthUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE51EB728FD23EA007450ED /* Flat_EarthUITestsLaunchTests.swift */; };
+		6DE51EC628FD2487007450ED /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE51EC528FD2487007450ED /* Request.swift */; };
+		6DE51EC728FD2500007450ED /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE51EC528FD2487007450ED /* Request.swift */; };
+		6DE51EC928FD25B8007450ED /* String+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE51EC828FD25B8007450ED /* String+Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,8 @@
 		6DE51EB128FD23EA007450ED /* Flat EarthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Flat EarthUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DE51EB528FD23EA007450ED /* Flat_EarthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flat_EarthUITests.swift; sourceTree = "<group>"; };
 		6DE51EB728FD23EA007450ED /* Flat_EarthUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flat_EarthUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6DE51EC528FD2487007450ED /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		6DE51EC828FD25B8007450ED /* String+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +104,8 @@
 		6DE51E9328FD23E8007450ED /* Flat Earth */ = {
 			isa = PBXGroup;
 			children = (
+				6DE51ECA28FD2A7A007450ED /* Model */,
+				6DE51EC428FD2472007450ED /* Util */,
 				6DE51E9428FD23E8007450ED /* AppDelegate.swift */,
 				6DE51E9628FD23E8007450ED /* SceneDelegate.swift */,
 				6DE51E9828FD23E8007450ED /* ViewController.swift */,
@@ -125,6 +132,22 @@
 				6DE51EB728FD23EA007450ED /* Flat_EarthUITestsLaunchTests.swift */,
 			);
 			path = "Flat EarthUITests";
+			sourceTree = "<group>";
+		};
+		6DE51EC428FD2472007450ED /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6DE51EC528FD2487007450ED /* Request.swift */,
+				6DE51EC828FD25B8007450ED /* String+Constants.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		6DE51ECA28FD2A7A007450ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE51EC928FD25B8007450ED /* String+Constants.swift in Sources */,
 				6DE51E9928FD23E8007450ED /* ViewController.swift in Sources */,
+				6DE51EC628FD2487007450ED /* Request.swift in Sources */,
 				6DE51E9528FD23E8007450ED /* AppDelegate.swift in Sources */,
 				6DE51E9728FD23E8007450ED /* SceneDelegate.swift in Sources */,
 			);
@@ -269,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DE51EAC28FD23EA007450ED /* Flat_EarthTests.swift in Sources */,
+				6DE51EC728FD2500007450ED /* Request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
