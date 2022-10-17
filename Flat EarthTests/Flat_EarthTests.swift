@@ -48,7 +48,7 @@ final class Flat_EarthTests: XCTestCase {
     func testLaunchesParseSuccess() {
         //Given
         var launches: [Launch]?
-        var error: Parser.ParserError?
+        var error: ParserProviderError?
         let expectation = expectation(description: "Parser")
         
         //When
@@ -64,6 +64,87 @@ final class Flat_EarthTests: XCTestCase {
         //Then
         XCTAssertNil(error)
         XCTAssertNotNil(launches)
+    }
+    
+    func testImageDownloaderSuccessWhenNotPresentInCache() {
+        //Given
+        let imageURL = URL(string: "https://images2.imgbox.com/be/e7/iNqsqVYM_o.png")!
+        let downloader = ImageDownloader.shared
+        let expectation = expectation(description: "ImageDownloader")
+        var image: UIImage?
+        var error: Error?
+        
+        //When
+        downloader.downloadImageFrom(url: imageURL) { _image, _error in
+            image = _image
+            error = _error
+            
+            expectation.fulfill()
+        }
+        
+        //Then
+        wait(for: [expectation], timeout: 20)
+        
+        //Then
+        XCTAssertNil(error)
+        XCTAssertNotNil(image)
+    }
+    
+    func testImageDownloaderSuccessWhenPresentInCache() {
+        //Given
+        let imageURL = URL(string: "https://images2.imgbox.com/be/e7/iNqsqVYM_o.png")!
+        let downloader = ImageDownloader.shared
+        let expectation = expectation(description: "ImageDownloader")
+        var image: UIImage?
+        var error: Error?
+        
+        //When
+        downloader.downloadImageFrom(url: imageURL) {_image, _error in
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 20)
+        
+        let secondExpectation = self.expectation(description: "ImageDownloader2")
+        downloader.downloadImageFrom(url: imageURL) {_image, _error in
+            image = _image
+            error = _error
+            
+            secondExpectation.fulfill()
+        }
+        
+        wait(for: [secondExpectation], timeout: 0.5)
+        
+        //Then
+        XCTAssertNil(error)
+        XCTAssertNotNil(image)
+    }
+    
+    func testMultipleCallbacks() {
+        //Given
+        let imageURL = URL(string: "https://images2.imgbox.com/be/e7/iNqsqVYM_o.png")!
+        let downloader = ImageDownloader.shared
+        
+        let expectation1 = expectation(description: "ImageDownloader1")
+        let expectation2 = expectation(description: "ImageDownloader2")
+        
+        var callback1 = {(image: UIImage?, error: Error?) -> Void in
+            expectation1.fulfill()
+        }
+        
+        var callback2 = {(image: UIImage?, error: Error?) -> Void in
+            expectation2.fulfill()
+        }
+        
+        //When
+        downloader.downloadImageFrom(url: imageURL, completion: callback1)
+        downloader.downloadImageFrom(url: imageURL, completion: callback2)
+        
+        wait(for: [expectation1, expectation2], timeout: 20)
+        
+        
+        //Then
+        XCTAssertTrue(true)
     }
     
 }

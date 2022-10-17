@@ -10,6 +10,7 @@ import Foundation
 class Request {
     enum RequestError: Error {
         case badURL
+        case networkError(Error?)
     }
     static let shared = Request()
     
@@ -30,7 +31,7 @@ class Request {
         request.httpMethod = "GET"
         
         session.dataTask(with: request) { data, response, error in
-            completion(data, nil)
+            completion(data, RequestError.networkError(error))
         }.resume()
     }
     

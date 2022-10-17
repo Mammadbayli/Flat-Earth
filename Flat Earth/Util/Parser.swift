@@ -7,20 +7,14 @@
 
 import Foundation
 
-class Parser {
-    enum ParserError: Error {
-        case parseError
-        case networkError(Request.RequestError)
-        case unknownError
-    }
-    
+class Parser: ParserProvider {
     static let shared = Parser()
 
     private init() {
         
     }
     
-    func getLaunches(completion: @escaping ([Launch]?, ParserError?) -> Void) {
+    func getLaunches(completion: @escaping ([Launch]?, ParserProviderError?) -> Void) {
         Request.shared.getLaunches { data, error in
             guard let data else {
                 completion(nil, .networkError(error!))
