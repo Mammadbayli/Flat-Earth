@@ -8,7 +8,7 @@
 import Foundation
 
 class Request {
-    enum RequestError {
+    enum RequestError: Error {
         case badURL
     }
     static let shared = Request()
