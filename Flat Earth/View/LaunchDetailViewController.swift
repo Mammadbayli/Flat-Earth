@@ -29,6 +29,8 @@ class LaunchDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
+        
         view.addSubview(launchNameLabel)
         
         NSLayoutConstraint.activate([
